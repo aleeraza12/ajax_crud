@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Are you sure to want to delete <span>
+    "{{item}}"</span><a href="{% url 'list' %} "> Cancel</a></h1>
+    <form method="post">
+      {% csrf_token %}
+    <input type="submit" class=" btn btn-primary" name="Confirm"></button>
+</form>
+  </body>
+</html>

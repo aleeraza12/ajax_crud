@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>List of Book</h1>
+    <table class="table mb-0" border="1">
+      <thead>
+      <tr>
+        <th>Cover</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Download</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for book in books %}
+      <tr>
+        <td style="width:100px">
+        {% if book.cover_image  %}
+          <img src="{{book.cover_image.url}}" alt="{{book.title}}" style="width:100px">
+        {% else %}
+        <span class="text-muted">No cover</span>
+        {% endif %}
+        </td>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>
+<a href="{{ book.pdf.url }}" target="_blank" class="botton">Download
+</a>
+          </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title></title>
+</head>
+<body>
+	<form method="post" action="">
+		{% csrf_token %}
+	{{form}}
+	<input type="submit" name="sunmit">
+</form>
+<!-- Main Content -->
+      <div id="content">
+
+        {% include 'crud_ajax/message.html' %}
+
+        {% block content %}
+      </div>
+ <!-- End of Main Content -->
+
+      <div class="navbar-nav ml-auto">
+            <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
+        </div>
+
+<h3>To do App</h3>
+{% for i in tasks %}
+{% if i.complete == True %}
+<strike>{{i.title}}</strike>
+{% else %}
+<span>{{i.title}}</span>
+{% endif %}
+<a href="{% url 'update_list' i.id %}">Edit
+</a>
+<a href="{% url 'delete_list' i.id %}">Delete
+</a><br>
+{%endfor%}
+ {% endblock content %}
